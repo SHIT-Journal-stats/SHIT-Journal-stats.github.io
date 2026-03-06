@@ -1,0 +1,12 @@
+[
+  {"ts": 1772565603.898, "score_weighted": 4.102, "score": 0, "rated_count": 0},
+  {"ts": 1772609000.000, "score_weighted": 4.250, "score": 1, "rated_count": 1},
+  {"ts": 1772652000.000, "score_weighted": 4.510, "score": 2, "rated_count": 3},
+  {"ts": 1772695000.000, "score_weighted": 4.800, "score": 3, "rated_count": 5},
+  {"ts": 1772738000.000, "score_weighted": 5.120, "score": 4, "rated_count": 8},
+  {"ts": 1772781000.000, "score_weighted": 5.350, "score": 5, "rated_count": 10},
+  {"ts": 1772824000.000, "score_weighted": 5.600, "score": 6, "rated_count": 13},
+  {"ts": 1772867000.000, "score_weighted": 5.880, "score": 7, "rated_count": 16},
+  {"ts": 1772910000.000, "score_weighted": 6.100, "score": 8, "rated_count": 19},
+  {"ts": 1772953000.000, "score_weighted": 6.350, "score": 9, "rated_count": 22}
+]
