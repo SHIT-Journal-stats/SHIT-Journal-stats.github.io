@@ -5,10 +5,10 @@ import { MetricChart } from "@/components/MetricChart";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-const METRIC_CONFIG: { key: string; title: string; type: "line" | "bar"; color: string }[] = [
-  { key: "views", title: "Monthly Views", type: "line", color: "hsl(221, 83%, 53%)" },
-  { key: "citations", title: "Monthly Citations", type: "bar", color: "hsl(142, 71%, 45%)" },
-  { key: "downloads", title: "Monthly Downloads", type: "line", color: "hsl(262, 83%, 58%)" },
+const METRIC_CONFIG: { key: string; title: string; color: string }[] = [
+  { key: "score_weighted", title: "Weighted Score", color: "hsl(221, 83%, 53%)" },
+  { key: "score", title: "Score", color: "hsl(142, 71%, 45%)" },
+  { key: "rated_count", title: "Rated Count", color: "hsl(262, 83%, 58%)" },
 ];
 
 export default function PaperStats() {
@@ -44,19 +44,15 @@ export default function PaperStats() {
       <PaperMetaCard meta={data.meta} />
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {METRIC_CONFIG.map((cfg) => {
-          const metricData = data.metrics[cfg.key];
-          if (!metricData) return null;
-          return (
-            <MetricChart
-              key={cfg.key}
-              title={cfg.title}
-              data={metricData}
-              type={cfg.type}
-              color={cfg.color}
-            />
-          );
-        })}
+        {METRIC_CONFIG.map((cfg) => (
+          <MetricChart
+            key={cfg.key}
+            title={cfg.title}
+            data={data.timeseries}
+            dataKey={cfg.key}
+            color={cfg.color}
+          />
+        ))}
       </div>
     </div>
   );

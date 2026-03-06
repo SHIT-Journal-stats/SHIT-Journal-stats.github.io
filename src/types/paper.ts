@@ -1,25 +1,17 @@
-export interface MetricPoint {
-  date: string;
-  value: number;
-}
-
 export interface PaperMeta {
-  title: string;
-  authors: string[];
-  journal: string;
-  published_date: string;
-  doi: string;
-  abstract: string;
+  manuscript_title: string;
+  [key: string]: unknown;
 }
 
-export interface PaperMetrics {
-  views: MetricPoint[];
-  citations: MetricPoint[];
-  downloads: MetricPoint[];
-  [key: string]: MetricPoint[];
+export interface DataPoint {
+  ts: number;
+  score_weighted: number;
+  score: number;
+  rated_count: number;
+  [key: string]: number;
 }
 
 export interface PaperData {
   meta: PaperMeta;
-  metrics: PaperMetrics;
+  timeseries: DataPoint[];
 }
