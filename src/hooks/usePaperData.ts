@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { PaperData } from "@/types/paper";
+import type { PaperData, PaperMeta, DataPoint } from "@/types/paper";
 
 interface UsePaperDataResult {
   data: PaperData | null;
@@ -22,13 +22,18 @@ export function usePaperData(paperId: string | undefined): UsePaperDataResult {
     setLoading(true);
     setError(null);
 
-    fetch(`/data/${paperId}.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`Paper "${paperId}" not found (${res.status})`);
-        return res.json();
-      })
-      .then((json: PaperData) => {
-        setData(json);
+    Promise.all([
+      fetch(`/meta/${paperId}.json`).then((res) => {
+        if (!res.ok) throw new Error(`Meta for "${paperId}" not found (${res.status})`);
+        return res.json() as Promise<PaperMeta>;
+      }),
+      fetch(`/data/${paperId}.json`).then((res) => {
+        if (!res.ok) throw new Error(`Data for "${paperId}" not found (${res.status})`);
+        return res.json() as Promise<DataPoint[]>;
+      }),
+    ])
+      .then(([meta, timeseries]) => {
+        setData({ meta, timeseries });
         setLoading(false);
       })
       .catch((err) => {
