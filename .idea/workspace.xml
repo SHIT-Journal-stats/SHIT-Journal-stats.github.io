@@ -30,7 +30,7 @@
 }]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/SHIT-Journal-stats/SHIT-preprints-matrics-history.git",
+    "url": "https://github.com/SHIT-Journal-stats/SHIT-preprints-metrics-history.git",
     "accountId": "b97d4eee-e03f-4239-826d-60b71e0a40f8"
   }
 }]]></component>
@@ -51,7 +51,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\meow\SHIT-preprints-matrics-history\src" />
+      <recent name="D:\meow\SHIT-preprints-metrics-history\src" />
     </key>
   </component>
   <component name="SharedIndexes">
