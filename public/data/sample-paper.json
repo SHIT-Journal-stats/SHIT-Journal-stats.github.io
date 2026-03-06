@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Attention Is All You Need",
+    "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Łukasz Kaiser", "Illia Polosukhin"],
+    "journal": "Advances in Neural Information Processing Systems",
+    "published_date": "2017-06-12",
+    "doi": "10.48550/arXiv.1706.03762",
+    "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train."
+  },
+  "metrics": {
+    "views": [
+      { "date": "2023-01", "value": 12400 },
+      { "date": "2023-02", "value": 13100 },
+      { "date": "2023-03", "value": 14500 },
+      { "date": "2023-04", "value": 13800 },
+      { "date": "2023-05", "value": 15200 },
+      { "date": "2023-06", "value": 16800 },
+      { "date": "2023-07", "value": 15600 },
+      { "date": "2023-08", "value": 14200 },
+      { "date": "2023-09", "value": 17300 },
+      { "date": "2023-10", "value": 18900 },
+      { "date": "2023-11", "value": 19500 },
+      { "date": "2023-12", "value": 20100 }
+    ],
+    "citations": [
+      { "date": "2023-01", "value": 312 },
+      { "date": "2023-02", "value": 285 },
+      { "date": "2023-03", "value": 340 },
+      { "date": "2023-04", "value": 298 },
+      { "date": "2023-05", "value": 375 },
+      { "date": "2023-06", "value": 410 },
+      { "date": "2023-07", "value": 362 },
+      { "date": "2023-08", "value": 330 },
+      { "date": "2023-09", "value": 425 },
+      { "date": "2023-10", "value": 460 },
+      { "date": "2023-11", "value": 488 },
+      { "date": "2023-12", "value": 510 }
+    ],
+    "downloads": [
+      { "date": "2023-01", "value": 4500 },
+      { "date": "2023-02", "value": 4800 },
+      { "date": "2023-03", "value": 5200 },
+      { "date": "2023-04", "value": 4900 },
+      { "date": "2023-05", "value": 5600 },
+      { "date": "2023-06", "value": 6100 },
+      { "date": "2023-07", "value": 5800 },
+      { "date": "2023-08", "value": 5300 },
+      { "date": "2023-09", "value": 6400 },
+      { "date": "2023-10", "value": 6900 },
+      { "date": "2023-11", "value": 7200 },
+      { "date": "2023-12", "value": 7600 }
+    ]
+  }
+}
