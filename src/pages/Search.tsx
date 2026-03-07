@@ -86,7 +86,7 @@ export default function SearchPage() {
           <Button variant="ghost" size="sm" onClick={() => navigate("/")}>
             ← Home
           </Button>
-          <h1 className="text-2xl font-bold text-foreground">Search Papers</h1>
+          <h1 className="text-2xl font-bold text-foreground">Search Preprints</h1>
         </div>
 
         <div className="relative">
@@ -133,7 +133,8 @@ export default function SearchPage() {
                   <span className="text-xs text-muted-foreground font-mono truncate">
                     {id}
                   </span>
-                  {tags.length > 0 && (
+                  {/*
+                    tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
                       {tags.map((tag, i) => (
                         <span
@@ -144,7 +145,8 @@ export default function SearchPage() {
                         </span>
                       ))}
                     </div>
-                  )}
+                    )*/
+                  }
                 </CardContent>
               </Card>
             );

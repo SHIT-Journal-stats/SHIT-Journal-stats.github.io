@@ -37,11 +37,11 @@ const Index = () => {
               onChange={(e) => setPaperId(e.target.value)}
             />
             <Button type="submit">Go</Button>
-            <Button variant="outline" type="button" onClick={() => navigate("/search")}>Search</Button>
             <Button><a href={"https://github.com/SHIT-Journal-stats/SHIT-Journal-stats.github.io"} className={"flex whitespace-pre"}>Project at <FaSquareGithub/></a></Button>
           </form>
           <p className="mt-4 text-center text-xs text-muted-foreground">
             Try <button type="button" onClick={() => navigate("/0928f19e-927f-4bd5-ad22-1bc4a9f3e37f")} className="text-primary underline-offset-4 hover:underline">0928f19e-927f-4bd5-ad22-1bc4a9f3e37f</button> for a demo.
+            Or <Button variant="outline" type="button" onClick={() => navigate("/search")}>Search</Button>
           </p>
         </CardContent>
       </Card>
