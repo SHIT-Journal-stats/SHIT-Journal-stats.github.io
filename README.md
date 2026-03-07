@@ -16,10 +16,11 @@
 
 **本项目：**
 - [数据源](https://github.com/Andys100thedt/S.H.I.T-Journal-Preprints-Stats_sniffer)
-- [网页源](https://github.com/SHIT-Journal-stats/preprints-metrics-view)
+- [网页源](https://github.com/SHIT-Journal-stats/preprints-metrics-view)(暂时停用)
 - [更新脚本](https://github.com/SHIT-Journal-stats/visualizer-updater)
 ---
 **《S.H.I.T》社区：***
+- [《S.H.I.T》工具集（神！）](https://github.com/colorcard/SHIT-Tools)
 - [《S.H.I.T》离线存档](https://github.com/xx025/shitjournal-backup)
 - [Q群自动搬屎机器人](https://github.com/qiyi71w/astrbot_plugin_shitjournal_daily)
 - [预印本pdf存档](https://github.com/gokuscraper/shit-journal-pdf)
