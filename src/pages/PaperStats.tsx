@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { usePaperData } from "@/hooks/usePaperData";
 import { PaperMetaCard } from "@/components/PaperMetaCard";
-import { MetricChart } from "@/components/MetricChart";
+import { UnifiedChart } from "@/components/UnifiedChart";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
@@ -43,17 +43,7 @@ export default function PaperStats() {
     <div className="mx-auto max-w-5xl space-y-6 p-6">
       <PaperMetaCard meta={data.meta} />
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {METRIC_CONFIG.map((cfg) => (
-          <MetricChart
-            key={cfg.key}
-            title={cfg.title}
-            data={data.timeseries}
-            dataKey={cfg.key}
-            color={cfg.color}
-          />
-        ))}
-      </div>
+      <UnifiedChart data={data.timeseries} metrics={METRIC_CONFIG} />
     </div>
   );
 }
