@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { usePaperData } from "@/hooks/usePaperData";
 import { PaperMetaCard } from "@/components/PaperMetaCard";
-import { MetricChart } from "@/components/MetricChart";
+import { UnifiedChart } from "@/components/UnifiedChart";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
