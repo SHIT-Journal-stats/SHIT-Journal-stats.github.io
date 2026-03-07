@@ -13,6 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import type { DataPoint } from "@/types/paper";
 
 interface MetricConfig {
