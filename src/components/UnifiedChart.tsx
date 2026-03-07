@@ -260,6 +260,21 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
+        <div className="mt-4 space-y-1">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span>{data.length > 0 ? formatTs(timeRange.min) : ""}</span>
+            <span className="font-medium">Time Range</span>
+            <span>{data.length > 0 ? formatTs(timeRange.max) : ""}</span>
+          </div>
+          <Slider
+            value={rangePercent}
+            onValueChange={(v) => setRangePercent(v as [number, number])}
+            min={0}
+            max={100}
+            step={0.5}
+            minStepsBetweenThumbs={2}
+          />
+        </div>
       </CardContent>
     </Card>
   );
