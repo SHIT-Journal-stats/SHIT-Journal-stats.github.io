@@ -13,6 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import type { DataPoint } from "@/types/paper";
 
 interface MetricConfig {
@@ -85,6 +86,8 @@ function cubicSpline(points: { x: number; y: number }[]): (x: number) => number 
 }
 
 export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
+  const [rangePercent, setRangePercent] = useState<[number, number]>([0, 100]);
+
   // Visibility state: each metric has dots + curve toggles
   const [visibility, setVisibility] = useState<Record<string, { dots: boolean; curve: boolean }>>(() => {
     const init: Record<string, { dots: boolean; curve: boolean }> = {};
@@ -99,18 +102,34 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
     }));
   }, []);
 
-  // Build chart data with spline curves
+  // Compute visible time range from slider
+  const timeRange = useMemo(() => {
+    if (data.length === 0) return { min: 0, max: 0 };
+    const tsMin = data[0].ts;
+    const tsMax = data[data.length - 1].ts;
+    const span = tsMax - tsMin;
+    return {
+      min: tsMin + (span * rangePercent[0]) / 100,
+      max: tsMin + (span * rangePercent[1]) / 100,
+    };
+  }, [data, rangePercent]);
+
+  // Build chart data with spline curves, filtered to visible range
   const chartData = useMemo(() => {
     if (data.length === 0) return [];
 
+    const filteredData = data.filter((d) => d.ts >= timeRange.min && d.ts <= timeRange.max);
+    if (filteredData.length === 0) return [];
+
     // Generate spline interpolation sample points
     const SAMPLES = 80;
-    const tsMin = data[0].ts;
-    const tsMax = data[data.length - 1].ts;
+    const tsMin = filteredData[0].ts;
+    const tsMax = filteredData[filteredData.length - 1].ts;
+    if (tsMin === tsMax) return filteredData.map((d) => ({ ...d } as Record<string, number | null>));
     const step = (tsMax - tsMin) / (SAMPLES - 1);
     const sampleTs = Array.from({ length: SAMPLES }, (_, i) => tsMin + i * step);
 
-    // Build spline for each metric
+    // Build spline for each metric (use ALL data for smooth spline, not just filtered)
     const splines: Record<string, (x: number) => number> = {};
     for (const m of metrics) {
       const pts = data
@@ -124,24 +143,23 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
       const row: Record<string, number | null> = { ts };
       for (const m of metrics) {
         row[`${m.key}_curve`] = splines[m.key](ts);
-        row[m.key] = null; // no dot at interpolated points
+        row[m.key] = null;
       }
       return row;
     });
 
     // Create data-point rows for scatter dots
-    const dataRows = data.map((d) => {
+    const dataRows = filteredData.map((d) => {
       const row: Record<string, number | null> = { ts: d.ts };
       for (const m of metrics) {
         row[m.key] = d[m.key] as number;
-        row[`${m.key}_curve`] = null; // no curve at data points (handled by spline rows)
+        row[`${m.key}_curve`] = null;
       }
       return row;
     });
 
-    // Merge and sort by ts
     return [...splineRows, ...dataRows].sort((a, b) => (a.ts as number) - (b.ts as number));
-  }, [data, metrics]);
+  }, [data, metrics, timeRange]);
 
   return (
     <Card>
@@ -241,6 +259,21 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
               ))}
             </ComposedChart>
           </ResponsiveContainer>
+        </div>
+        <div className="mt-4 space-y-1">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <span>{data.length > 0 ? formatTs(timeRange.min) : ""}</span>
+            <span className="font-medium">Time Range</span>
+            <span>{data.length > 0 ? formatTs(timeRange.max) : ""}</span>
+          </div>
+          <Slider
+            value={rangePercent}
+            onValueChange={(v) => setRangePercent(v as [number, number])}
+            min={0}
+            max={100}
+            step={0.5}
+            minStepsBetweenThumbs={2}
+          />
         </div>
       </CardContent>
     </Card>
