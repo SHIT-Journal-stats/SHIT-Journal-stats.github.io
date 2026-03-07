@@ -13,29 +13,69 @@ interface SearchResult {
   score: number;
 }
 
+// Levenshtein distance for fuzzy matching
+function levenshtein(a: string, b: string): number {
+  const m = a.length, n = b.length;
+  const dp: number[][] = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1]
+        ? dp[i - 1][j - 1]
+        : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+  }
+  return dp[m][n];
+}
+
+// Best fuzzy score of a query word against any token word
+function bestFuzzyScore(queryWord: string, tokenWords: string[]): number {
+  let best = 0;
+  for (const tw of tokenWords) {
+    // Exact substring
+    if (tw.includes(queryWord)) { best = Math.max(best, 100); continue; }
+    if (queryWord.includes(tw)) { best = Math.max(best, 80); continue; }
+    // Levenshtein-based (allow ~30% edit distance)
+    const maxDist = Math.max(1, Math.floor(Math.max(queryWord.length, tw.length) * 0.35));
+    const dist = levenshtein(queryWord, tw);
+    if (dist <= maxDist) {
+      best = Math.max(best, (1 - dist / Math.max(queryWord.length, tw.length)) * 70);
+    }
+  }
+  return best;
+}
+
 function scoreMatch(token: string, queryWords: string[]): number {
   const lower = token.toLowerCase();
+  const tokenWords = lower.split(/\s+/);
   const joined = queryWords.join(" ");
 
   // Exact match
-  if (lower === joined) return 1000;
+  if (lower === joined) return 10000;
 
-  // Ordered substring match (all words in sequence)
-  if (lower.includes(joined)) return 500;
+  // Ordered substring match
+  if (lower.includes(joined)) return 5000;
 
-  // Check each query word
+  // Per-word fuzzy matching
+  let totalScore = 0;
   let matchedCount = 0;
-  for (const w of queryWords) {
-    if (lower.includes(w)) matchedCount++;
+  for (const qw of queryWords) {
+    const ws = bestFuzzyScore(qw, tokenWords);
+    if (ws > 0) {
+      totalScore += ws;
+      matchedCount++;
+    }
   }
 
   if (matchedCount === 0) return 0;
 
-  // Score: fraction of words matched * 100, bonus for all matched
-  let score = (matchedCount / queryWords.length) * 100;
-  if (matchedCount === queryWords.length) score += 200;
+  // Bonus for matching all query words
+  if (matchedCount === queryWords.length) totalScore += 200;
+  // Scale by coverage
+  totalScore *= matchedCount / queryWords.length;
 
-  return score;
+  return totalScore;
 }
 
 export default function SearchPage() {
