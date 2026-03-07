@@ -33,9 +33,24 @@ const HIDDEN_KEYS = new Set([
   "latrine_sort_key",
 ]);
 
+class CoauthorMetainfo{
+  name: string;
+  email: string;
+  institution: string;
+  contribution: string;
+}
+
+function formatFromCoauthor(entry: CoauthorMetainfo){
+  //[{"name": "\u767d\u6cfd", "email": "3565393044@qq.com", "institution": "\u5b58\u5728\u7a7a\u95f4\u4e0e\u65f6\u95f4\u7814\u7a76\u4e2d\u5fc3", "contribution": "co-first"}]
+  return entry.name + '(' + entry.email + ',' + entry.institution + ")" + '[' + entry.contribution + ']';
+}
+
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) return "—";
-  if (Array.isArray(value)) return value.length === 0 ? "—" : value.join(", ");
+  if (Array.isArray(value)) {
+    const formatted_value = value.map((v) => formatFromCoauthor(v));
+    return value.length === 0 ? "—" : formatted_value.join(", ");
+  }
   if (typeof value === "boolean") return value ? "Yes" : "No";
   if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}T/.test(value)) {
     return new Date(value).toLocaleString();
