@@ -169,7 +169,7 @@ export default function SearchPage() {
                 onClick={() => navigate(`/${id}`)}
               >
                 <CardContent className="flex flex-col gap-1 py-3 px-4">
-                  <span className="font-medium text-foreground">{title || token}</span>
+                  <span className="font-medium text-foreground">{token}</span>
                   <span className="text-xs text-muted-foreground font-mono truncate">
                     {id}
                   </span>
