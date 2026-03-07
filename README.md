@@ -8,6 +8,10 @@
 
 输入`预印本ID`：（e.g. `0928f19e-927f-4bd5-ad22-1bc4a9f3e37f` for `https://shitjournal.org/preprints/0928f19e-927f-4bd5-ad22-1bc4a9f3e37f` as `论“国内月亮与国外月亮孰圆”：一项基于南洋理工留学生小周周叙事经验的探索性研究`）
 
+或者直接使用字符串搜索（2026/3/8新增）
+
+###### *具体使用示例见下文屏幕截图*
+
 ## *我推荐你看这些 / SEE ALSO:*
 
 **本项目：**
@@ -20,7 +24,8 @@
 - [Q群自动搬屎机器人](https://github.com/qiyi71w/astrbot_plugin_shitjournal_daily)
 - [预印本pdf存档](https://github.com/gokuscraper/shit-journal-pdf)
 ---
-![屏幕截图](https://shit-journal-stats.github.io/SSMH_example.png)
+![屏幕截图：资料页](https://shit-journal-stats.github.io/SSMH_example_v.2.png)
+![屏幕截图：搜索](https://shit-journal-stats.github.io/SSMH_example_v.2_search.png)
 ---
 
 ## 本网站提供什么数据？
@@ -34,6 +39,7 @@
 - 最早的同步开始于 2026/3/7
 - 最早的数据记录开始于 2026/2/28
 - 由于些许因素数据记录可能中途中断。（最近有段时间S.H.I.T疑似是被DoS了）
+- 图表中背景线条区域为数据中断区，趋势线和实际数据有差异。
 
 ## 许可与免责
 
