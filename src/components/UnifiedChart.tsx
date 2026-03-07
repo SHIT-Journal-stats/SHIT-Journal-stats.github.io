@@ -88,7 +88,7 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
   // Visibility state: each metric has dots + curve toggles
   const [visibility, setVisibility] = useState<Record<string, { dots: boolean; curve: boolean }>>(() => {
     const init: Record<string, { dots: boolean; curve: boolean }> = {};
-    for (const m of metrics) init[m.key] = { dots: true, curve: true };
+    for (const m of metrics) init[m.key] = { dots: false, curve: true };
     return init;
   });
 
@@ -179,14 +179,27 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
               <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
               <XAxis
                 dataKey="ts"
-                tick={{ fontSize: 11 }}
+                tick={{ fontSize: 0 }}
                 className="text-muted-foreground"
                 tickFormatter={formatTs}
+                xAxisId={0}
                 type="number"
                 domain={["dataMin", "dataMax"]}
                 scale="time"
               />
-              <YAxis tick={{ fontSize: 12 }} className="text-muted-foreground" />
+              <XAxis
+                  dataKey="ts"
+                  tick={{ fontSize: 11 }}
+                  className="text-muted-foreground"
+                  tickFormatter={formatTs}
+                  interval={150}
+                  xAxisId={1}
+                  type="number"
+                  domain={["dataMin", "dataMax"]}
+                  scale="time"
+              />
+              <YAxis yAxisId={0} tick={{ fontSize: 12 }} className="text-muted-foreground" />
+              <YAxis yAxisId={1} tick={{ fontSize: 12 }} className="text-muted-foreground" />
               <Tooltip
                 labelFormatter={(val) => formatTs(val as number)}
                 contentStyle={{
@@ -208,19 +221,21 @@ export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
                     fill={m.color}
                     name={`${m.title}`}
                     r={3}
+                    yAxisId={m.key === "rated_count" ? 1 : 0}
                   />
                 )
               ))}
               {metrics.map((m) => (
                 visibility[m.key]?.curve && (
                   <Line
-                    key={`${m.key}-curve`}
-                    dataKey={`${m.key}_curve`}
+                    key={`${m.key}`}
+                    dataKey={`${m.key}`}
                     stroke={m.color}
                     strokeWidth={2}
                     dot={false}
                     connectNulls
-                    name={`${m.title} (fit)`}
+                    name={`${m.title} (curve)`}
+                    yAxisId={m.key === "rated_count" ? 1 : 0}
                   />
                 )
               ))}
