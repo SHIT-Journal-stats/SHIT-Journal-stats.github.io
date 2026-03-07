@@ -1,73 +1,49 @@
-# Welcome to your Lovable project
+# S.H.I.T Stat Metrics History
 
-## Project info
+本仓库是本项目对 [《S.H.I.T》](https://shitjournal.org/) 的**预印本历史统计数据**进行实时记录，定期同步的数据可视化网页前端的静态部署
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+# 使用:
 
-## How can I edit this code?
+网站入口：[SSMH](https://shit-journal-stats.github.io/)
 
-There are several ways of editing your application.
+输入`预印本ID`：（e.g. `0928f19e-927f-4bd5-ad22-1bc4a9f3e37f` for `https://shitjournal.org/preprints/0928f19e-927f-4bd5-ad22-1bc4a9f3e37f` as `论“国内月亮与国外月亮孰圆”：一项基于南洋理工留学生小周周叙事经验的探索性研究`）
 
-**Use Lovable**
+或者直接使用字符串搜索（2026/3/8新增）
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+###### *具体使用示例见下文屏幕截图*
 
-Changes made via Lovable will be committed automatically to this repo.
+## *我推荐你看这些 / SEE ALSO:*
 
-**Use your preferred IDE**
+**本项目：**
+- [数据源](https://github.com/Andys100thedt/S.H.I.T-Journal-Preprints-Stats_sniffer)
+- [网页源](https://github.com/SHIT-Journal-stats/preprints-metrics-view)(暂时停用)
+- [更新脚本](https://github.com/SHIT-Journal-stats/visualizer-updater)
+---
+**《S.H.I.T》社区：***
+- [《S.H.I.T》离线存档](https://github.com/xx025/shitjournal-backup)
+- [Q群自动搬屎机器人](https://github.com/qiyi71w/astrbot_plugin_shitjournal_daily)
+- [预印本pdf存档](https://github.com/gokuscraper/shit-journal-pdf)
+---
+![屏幕截图：资料页](https://shit-journal-stats.github.io/SSMH_example_v.2.png)
+![屏幕截图：搜索](https://shit-journal-stats.github.io/SSMH_example_v.2_search.png)
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 本网站提供什么数据？
+- 实时的的元数据
+- **纪录以来**的全站加权分，原始平均分，以及评分人数的历史趋势
+- *完整*的信息记录（尽管原始稿件可能在盲评阶段或已被删除）
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 数据同步
+- 每小时自动执行一次同步。
+- 每5分钟抄录一次数据。
+- 最早的同步开始于 2026/3/7
+- 最早的数据记录开始于 2026/2/28
+- 由于些许因素数据记录可能中途中断。（最近有段时间S.H.I.T疑似是被DoS了）
+- 图表中背景线条区域为数据中断区，趋势线和实际数据有差异。
 
-Follow these steps:
+## 许可与免责
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+本站不会刻意收集任何有关预印本**内容**的信息。如果确有其事，其版权仍然归 S.H.I.T Journal 及原作者所有；若来源站要求停止同步，将立即停止并配合处理。
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Footnotes
+*大家一起造答辩
