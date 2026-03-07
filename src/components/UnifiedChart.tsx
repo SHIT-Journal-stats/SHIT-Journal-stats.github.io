@@ -85,6 +85,8 @@ function cubicSpline(points: { x: number; y: number }[]): (x: number) => number 
 }
 
 export function UnifiedChart({ data, metrics }: UnifiedChartProps) {
+  const [rangePercent, setRangePercent] = useState<[number, number]>([0, 100]);
+
   // Visibility state: each metric has dots + curve toggles
   const [visibility, setVisibility] = useState<Record<string, { dots: boolean; curve: boolean }>>(() => {
     const init: Record<string, { dots: boolean; curve: boolean }> = {};
