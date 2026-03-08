@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="335974e4-31ab-4bef-b267-8b46c9250f1d" name="Changes" comment="Asset relocation&#10;chore.">
-      <change afterPath="$PROJECT_DIR$/src/pusher.py" afterDir="false" />
-    </list>
+    <list default="true" id="335974e4-31ab-4bef-b267-8b46c9250f1d" name="Changes" comment="Asset relocation&#10;chore." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,21 +20,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Andys100thedt"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Andys100thedt&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/SHIT-Journal-stats/SHIT-preprints-metrics-history.git",
+    "url": "https://github.com/SHIT-Journal-stats/SHIT-Journal-stats.github.io.git",
     "accountId": "b97d4eee-e03f-4239-826d-60b71e0a40f8"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="3AaXkR7DEJ73V7uwJyzCkHkutSf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,7 +44,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/meow/SHIT-preprints-metrics-history"
   }
 }]]></component>
   <component name="RecentsManager">
