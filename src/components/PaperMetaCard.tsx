@@ -63,7 +63,7 @@ interface PaperMetaCardProps {
 }
 
 export function PaperMetaCard({ meta }: PaperMetaCardProps) {
-  const title = meta.manuscript_title ?? "Untitled";
+  const title = (meta.manuscript_title !== "N/A" ? meta.manuscript_title : meta.title) ?? "Untitled";
   const entries = Object.entries(meta).filter(
     ([key]) => key !== "manuscript_title" && !HIDDEN_KEYS.has(key)
   );

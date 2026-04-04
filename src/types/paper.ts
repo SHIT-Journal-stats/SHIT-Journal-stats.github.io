@@ -1,5 +1,6 @@
 export interface PaperMeta {
   manuscript_title: string;
+  title: string;
   [key: string]: unknown;
 }
 
