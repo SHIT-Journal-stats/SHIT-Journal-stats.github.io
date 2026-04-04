@@ -55,6 +55,9 @@ function formatValue(value: unknown): string {
   if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}T/.test(value)) {
     return new Date(value).toLocaleString();
   }
+  if (value["display_name"]) {
+    return String(`${value["display_name"]}[${value["id"]}] | ${value["avatar_url"]}`).toLocaleString();
+  }
   return String(value);
 }
 
